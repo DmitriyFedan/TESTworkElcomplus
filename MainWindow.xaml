@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TESTworkElcomplus"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="400">
     <Grid>
+        <Label Content="После нажатия кнопки выполнится алгоритм поиска" HorizontalAlignment="Left" Margin="25,10,0,0" VerticalAlignment="Top" Width="360"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="205,59,15,10"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="35,59,0,0" VerticalAlignment="Top" Height="55" Width="145"/>
 
     </Grid>
 </Window>
