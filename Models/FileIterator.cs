@@ -10,8 +10,10 @@ namespace TESTworkElcomplus.Models
 {
     public class FileIterator
     {
+        public List<string> filenames = new List<string>();
         public async void Separator(DirectoryInfo directory, FileSerializer serializer)
         {
+            
             JsToArrDeserializer jsDeser = new JsToArrDeserializer();
             XmlToArrDeserializer xmlDeser = new XmlToArrDeserializer();
             // 
@@ -22,13 +24,15 @@ namespace TESTworkElcomplus.Models
                     switch (file.Extension.ToString())
                     {
                         case ".json":
+                            filenames.Add(file.FullName);
                             serializer.SearchUnique(jsDeser, file);
                             Thread.Sleep(500);
                             break;
                         /*//  к Сожалению изначально не предусмотрел проблемы 
                          * с конкурированием потоков, а времени на исправление и поиск нового решения уже не оставалось
-                         * поэтому воспользовался таким костылем с  кратковременным усыплением потока*/
+                         * поэтому воспользовался таким костылем с  усыплением потока*/
                         case ".xml":
+                            filenames.Add(file.FullName);
                             serializer.SearchUnique(xmlDeser, file);
                             Thread.Sleep(500);
                             break;

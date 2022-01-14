@@ -24,14 +24,19 @@ namespace TESTworkElcomplus
     {
         public MainWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();    
         }
-        
+        // На данный момент  за выделенное время удалось реализовать функционал только
+        // совсем примитивным способом , посчитал что плохое решение лучше чем никакого  =) ) 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ApplicationViewModel vm = new ApplicationViewModel();
             Label1.Content = vm.UpdateValues();
+        }
+
+        private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

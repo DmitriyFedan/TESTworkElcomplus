@@ -12,32 +12,38 @@ namespace TESTworkElcomplus
 {
     internal class ApplicationViewModel
     {
-        private string DirPath = @"G:\WORKED\C# projects\TESTworkElcomplus\Files";
-        private string fileName = "file_1.json";
-        private string fileNameX = "file_1.xml";
+        private string DirPath =@"G:\WORKED\C# projects\TESTworkElcomplus\Files";
+        //private string fileName = "file_1.json";
+        //private string fileNameX = "file_1.xml";
         private string finalyPath;
         private string finalyPathXML1;
         private string resultValue;
-  
+        public List<string> fileNameList;
         DirectoryInfo dir;
         FileSerializer serializer;
         FileIterator fileIterator;
 
         public ApplicationViewModel()
         {
+            try
+            {
+                //finalyPath = Path.Combine(DirPath, fileName);
+                //finalyPathXML1 = Path.Combine(DirPath, fileNameX);
+                fileNameList = new List<string> { };
+                dir = new DirectoryInfo(DirPath);
 
-            finalyPath = Path.Combine(DirPath, fileName);
-            finalyPathXML1 = Path.Combine(DirPath, fileNameX);
-            dir = new DirectoryInfo(DirPath);
-            serializer  = new FileSerializer();
-            fileIterator = new FileIterator();
-
+                serializer = new FileSerializer();
+                fileIterator = new FileIterator();
+            }
+            catch (Exception ex)
+            { }
         }
         public string UpdateValues()
         {
             fileIterator.Separator(dir, serializer);
             Thread.Sleep(4000); //  )) 
             resultValue = serializer.Resulter();
+            fileNameList = fileIterator.filenames;
             return resultValue;
         }
           
