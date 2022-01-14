@@ -25,12 +25,13 @@ namespace TESTworkElcomplus
         public MainWindow()
         {
             InitializeComponent();
+            
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ApplicationViewModel vm = new ApplicationViewModel();
-            Label1.Content = vm.resultValue;
+            Label1.Content = vm.UpdateValues();
         }
     }
 }

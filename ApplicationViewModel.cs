@@ -12,12 +12,12 @@ namespace TESTworkElcomplus
 {
     internal class ApplicationViewModel
     {
-        private string DirPath = @"G:\WORKED\C# projects\testwork\Files";
+        private string DirPath = @"G:\WORKED\C# projects\TESTworkElcomplus\Files";
         private string fileName = "file_1.json";
         private string fileNameX = "file_1.xml";
         private string finalyPath;
         private string finalyPathXML1;
-        private public string resultValue;
+        private string resultValue;
   
         DirectoryInfo dir;
         FileSerializer serializer;
@@ -36,9 +36,9 @@ namespace TESTworkElcomplus
         public string UpdateValues()
         {
             fileIterator.Separator(dir, serializer);
-            Thread.Sleep(3000); //  )) 
+            Thread.Sleep(4000); //  )) 
             resultValue = serializer.Resulter();
-
+            return resultValue;
         }
           
     }
