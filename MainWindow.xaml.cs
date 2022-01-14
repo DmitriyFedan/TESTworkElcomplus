@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TESTworkElcomplus;
 
 namespace TESTworkElcomplus
 {
@@ -23,6 +25,12 @@ namespace TESTworkElcomplus
         public MainWindow()
         {
             InitializeComponent();
+        }
+        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationViewModel vm = new ApplicationViewModel();
+            Label1.Content = vm.resultValue;
         }
     }
 }
