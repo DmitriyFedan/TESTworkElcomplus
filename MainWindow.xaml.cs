@@ -26,7 +26,7 @@ namespace TESTworkElcomplus
         {
             InitializeComponent();    
         }
-        // На данный момент  за выделенное время удалось реализовать функционал только
+        
         // совсем примитивным способом , посчитал что плохое решение лучше чем никакого  =) )
         // C WPF мне еще конечно нужно много разбираться )
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,10 +40,14 @@ namespace TESTworkElcomplus
             else
                 MessageBox.Show($"Директория {dirPath} не найдена  укажите другой путь");
 
+            
             foreach (var item in vm.fileNameList)
                 Listbox1.Items.Add(item);
         }
 
-       
+        private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

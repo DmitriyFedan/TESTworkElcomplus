@@ -16,7 +16,7 @@ namespace TESTworkElcomplus
             XmlElement xRoot = xdoc.DocumentElement;
             List<string> resultList = new List<string>();
             XmlNode node = xRoot.SelectSingleNode("Values"); // берем узел содержащий Values 
-            // обработать пустой узел 
+            
             foreach (XmlNode childNode in node)
                 if (childNode.Name == "Value")
                     resultList.Add(childNode.InnerText);

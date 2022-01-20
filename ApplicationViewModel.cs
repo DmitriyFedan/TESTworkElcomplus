@@ -24,30 +24,23 @@ namespace TESTworkElcomplus
 
         public ApplicationViewModel()
         {
-            try
-            {
-                //finalyPath = Path.Combine(DirPath, fileName);
-                //finalyPathXML1 = Path.Combine(DirPath, fileNameX);
-                fileNameList = new List<string> { };
-                
-
-                valuesCounter = new ValuesCounter();
-                fileIterator = new FileIterator();
-            }
-            catch (Exception ex)
-            { }
+            //finalyPath = Path.Combine(DirPath, fileName);
+            //finalyPathXML1 = Path.Combine(DirPath, fileNameX);
+            fileNameList = new List<string> { };
+            valuesCounter = new ValuesCounter();
+            fileIterator = new FileIterator();
         }
         public string UpdateValues()
         {
             dir = new DirectoryInfo(DirPath);
-            
-            fileIterator.Separator(dir, valuesCounter);
-            
+            fileIterator.Separator(dir, valuesCounter);   
             resultValue = valuesCounter.Resulter();
+
+            HistWriter.HistWriting(dir.FullName, dir.FullName); // writting data  in hist.json
+            
             foreach (var file in dir.GetFiles())
                 fileNameList.Add(file.Name);
             return resultValue;
-        }
-          
+        }         
     }
 }
