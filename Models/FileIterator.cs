@@ -1,47 +1,56 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+   
 
-namespace TESTworkElcomplus.Models
+
+namespace TESTworkElcomplus
 {
     public class FileIterator
     {
-        public List<string> filenames = new List<string>();
-        public async void Separator(DirectoryInfo directory, FileSerializer serializer)
+        // класс представляет из себя  конструкцию имеющую один метод Separator
+        // этот метод принимает директорию и объект класса FileSerializer (который  в свою очередб принимает объект интерфейса
+        // десериализатор  и файл который нужно десереализовать) 
+        // в методе создатеся два десериализатора  json xaml  и запускается таска которая проходит по директории
+        //берет каждый файл и  в соответсвии с  расширением файла пременяет к нему соответсвующий дессериализатор
+
+
+        public void Separator(DirectoryInfo directory, ValuesCounter reader)
         {
-            
-            JsToArrDeserializer jsDeser = new JsToArrDeserializer();
-            XmlToArrDeserializer xmlDeser = new XmlToArrDeserializer();
+            //JsToArrDeserializer jsDeser = new JsToArrDeserializer();
+            //XmlToArrDeserializer xmlDeser = new XmlToArrDeserializer();
+            ValuesJsonReader jsonReader = new ValuesJsonReader();
+            ValuesXmlReader xmlReader = new ValuesXmlReader();
             // 
-            await Task.Run(() =>
+            Console.WriteLine("in Separator");
+            foreach (FileInfo file in directory.GetFiles())
             {
-                foreach (FileInfo file in directory.GetFiles())
+                Console.WriteLine(file.Name);
+                switch (file.Extension.ToString())
                 {
-                    switch (file.Extension.ToString())
-                    {
-                        case ".json":
-                            filenames.Add(file.FullName);
-                            serializer.SearchUnique(jsDeser, file);
-                            Thread.Sleep(500);
-                            break;
-                        /*//  к Сожалению изначально не предусмотрел проблемы 
-                         * с конкурированием потоков, а времени на исправление и поиск нового решения уже не оставалось
-                         * поэтому воспользовался таким костылем с  усыплением потока*/
-                        case ".xml":
-                            filenames.Add(file.FullName);
-                            serializer.SearchUnique(xmlDeser, file);
-                            Thread.Sleep(500);
-                            break;
-                        default:
-                            Console.WriteLine($"Файлы с  расширением {file.Extension} не ожет быть обработан");
-                            break;
-                    }
+                    case ".json":
+                        reader.SearchUnique(jsonReader, file);
+                        //Thread.Sleep(500);
+                        break;
+                    /*//  к Сожалению изначально не предусмотрел проблемы 
+                        * с конкурированием потоков, а времени на исправление и поиск нового решения уже не оставалось
+                        * поэтому воспользовался таким костылем с  кратковременным усыплением потока*/
+                    case ".xml":
+                        reader.SearchUnique(xmlReader, file);
+                        //Thread.Sleep(500);
+                        break;
+                    default:
+                        ////  Вывести сообщение через messagebox //// 
+                        Console.WriteLine($"Файлы с  расширением {file.Extension} не ожет быть обработан"); 
+                        break;
                 }
-            });
+            }
+                
         }
     }
 }
+
+

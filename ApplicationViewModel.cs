@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using TESTworkElcomplus.Models;
 using TESTworkElcomplus;
 
@@ -12,7 +10,8 @@ namespace TESTworkElcomplus
 {
     internal class ApplicationViewModel
     {
-        private string DirPath =@"G:\WORKED\C# projects\TESTworkElcomplus\Files";
+        //string DirPath =@"G:\WORKED\C# projects\TESTworkElcomplus\Files";
+        public string DirPath { get; set; }
         //private string fileName = "file_1.json";
         //private string fileNameX = "file_1.xml";
         private string finalyPath;
@@ -20,7 +19,7 @@ namespace TESTworkElcomplus
         private string resultValue;
         public List<string> fileNameList;
         DirectoryInfo dir;
-        FileSerializer serializer;
+        ValuesCounter valuesCounter;
         FileIterator fileIterator;
 
         public ApplicationViewModel()
@@ -30,9 +29,9 @@ namespace TESTworkElcomplus
                 //finalyPath = Path.Combine(DirPath, fileName);
                 //finalyPathXML1 = Path.Combine(DirPath, fileNameX);
                 fileNameList = new List<string> { };
-                dir = new DirectoryInfo(DirPath);
+                
 
-                serializer = new FileSerializer();
+                valuesCounter = new ValuesCounter();
                 fileIterator = new FileIterator();
             }
             catch (Exception ex)
@@ -40,10 +39,13 @@ namespace TESTworkElcomplus
         }
         public string UpdateValues()
         {
-            fileIterator.Separator(dir, serializer);
-            Thread.Sleep(4000); //  )) 
-            resultValue = serializer.Resulter();
-            fileNameList = fileIterator.filenames;
+            dir = new DirectoryInfo(DirPath);
+            
+            fileIterator.Separator(dir, valuesCounter);
+            
+            resultValue = valuesCounter.Resulter();
+            foreach (var file in dir.GetFiles())
+                fileNameList.Add(file.Name);
             return resultValue;
         }
           
