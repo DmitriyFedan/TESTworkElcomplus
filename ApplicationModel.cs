@@ -8,7 +8,7 @@ using TESTworkElcomplus;
 
 namespace TESTworkElcomplus
 {
-    internal class ApplicationViewModel
+    internal class ApplicationModel
     {
         //string DirPath =@"G:\WORKED\C# projects\TESTworkElcomplus\Files";
         public string DirPath { get; set; }
@@ -22,7 +22,7 @@ namespace TESTworkElcomplus
         ValuesCounter valuesCounter;
         FileIterator fileIterator;
 
-        public ApplicationViewModel()
+        public ApplicationModel()
         {
             //finalyPath = Path.Combine(DirPath, fileName);
             //finalyPathXML1 = Path.Combine(DirPath, fileNameX);

@@ -17,6 +17,9 @@ using TESTworkElcomplus;
 
 namespace TESTworkElcomplus
 {
+    // path in my directory
+    //  string DirPath =  @"G:\WORKED\C# projects\TESTworkElcomplus\Files";
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -28,12 +31,12 @@ namespace TESTworkElcomplus
         }
         
         // совсем примитивным способом , посчитал что плохое решение лучше чем никакого  =) )
-        // C WPF мне еще конечно нужно много разбираться )
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
             string dirPath = textBoxPath.Text.ToString();
-            ApplicationViewModel vm = new ApplicationViewModel();
+            ApplicationModel vm = new ApplicationModel();
             vm.DirPath = dirPath;
             if (Directory.Exists(dirPath))
                 Label1.Content = vm.UpdateValues();
