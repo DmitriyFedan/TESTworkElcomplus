@@ -35,13 +35,13 @@ namespace TESTworkElcomplus
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            string dirPath = textBoxPath.Text.ToString();
+            string dirPath = textBoxPath.Text.ToString();   // считаем путь к целевой папке из  текстбокса
             ApplicationModel vm = new ApplicationModel();
             vm.DirPath = dirPath;
             if (Directory.Exists(dirPath))
                 Label1.Content = vm.UpdateValues();
             else
-                MessageBox.Show($"Директория {dirPath} не найдена  укажите другой путь");
+                MessageBox.Show($"Директория {dirPath} не найдена, вставьте путь к целевой папке в поле ввода");
 
             
             foreach (var item in vm.fileNameList)
