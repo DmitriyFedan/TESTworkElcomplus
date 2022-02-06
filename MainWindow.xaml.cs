@@ -46,6 +46,8 @@ namespace TESTworkElcomplus
             
             foreach (var item in vm.fileNameList)
                 Listbox1.Items.Add(item);
+            /// коммент1
+            /// коммент 2
         }
 
         private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
