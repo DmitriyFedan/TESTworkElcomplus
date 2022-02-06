@@ -30,7 +30,7 @@ namespace TESTworkElcomplus
             InitializeComponent();    
         }
         
-        // совсем примитивным способом , посчитал что плохое решение лучше чем никакого  =) )
+        // реализовал примитивным способом , посчитал что плохое решение лучше чем никакого  =) )
       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
