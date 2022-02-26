@@ -30,7 +30,7 @@ namespace TESTworkElcomplus
             InitializeComponent();    
         }
         
-        // реализовал примитивным способом , посчитал что плохое решение лучше чем никакого  =) )
+        //  ) )
       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +47,8 @@ namespace TESTworkElcomplus
             foreach (var item in vm.fileNameList)
                 Listbox1.Items.Add(item);
             /// коммент1
-            /// коммент 2
+            /// коммент2
+            /// 
         }
 
         private void Listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
